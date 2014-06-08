@@ -1,0 +1,33 @@
+- import quickstart.action._
+- import quickstart.component.GA
+
+!!! 5
+html
+  head
+    != antiCsrfMeta
+    != xitrumCss
+
+    meta(content="text/html; charset=utf-8" http-equiv="content-type")
+    title My new Xitrum project
+
+    link(type="image/vnd.microsoft.icon" rel="shortcut icon" href={publicUrl("favicon.ico")})
+
+    link(type="text/css" rel="stylesheet" media="all" href={webJarsUrl("bootstrap/3.1.1/css", "bootstrap.css", "bootstrap.min.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={webJarsUrl("bootstrap/3.1.1/css", "bootstrap.css", "bootstrap.min.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("app.css")})
+    
+    script(src={publicUrl("bower_components/platform/platform.js")})
+    link(rel="import" href={publicUrl("bower_components/twitter-button/dist/twitter-button.html")})
+
+  body
+    .container
+      h1
+        a(href={url[SiteIndex]}) My new Xitrum project
+
+      #flash
+        !~ jsRenderFlash()
+      != renderedView
+
+    != jsDefaults
+    != jsForView
+    != GA.render("my-token")
